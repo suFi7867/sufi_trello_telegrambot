@@ -4,7 +4,6 @@ const express = require("express");
 const app = express();
 
 const botLaunch = require("./bot");
-
 const PORT = process.env.PORT || 3005;
 
 // Deafult Midllewares
