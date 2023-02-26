@@ -1,11 +1,13 @@
 const axios = require("axios")
 const {Trello_API_KEY, Trello_Secret_Token } = process.env; // Environment Variables
 
+const BASE_URL = "https://api.trello.com";
+
 // Create New Board
 const createBoard = async (name) => {
   try {
     let res = await axios.post(
-      `https://api.trello.com/1/boards/?name=${name}&key=${Trello_API_KEY}&token=${Trello_Secret_Token}`
+      `${BASE_URL}/1/boards/?name=${name}&key=${Trello_API_KEY}&token=${Trello_Secret_Token}`
     );
    console.log(res);
     return `Board Created Successfully with Name : ${name}`;
@@ -14,11 +16,12 @@ const createBoard = async (name) => {
   }
 };
 
+
 // Delete Board
 const deleteBoard = async (id) => {
   try {
     let res = await axios.delete(
-      `https://api.trello.com/1/boards/${id}?key=${Trello_API_KEY}&token=${Trello_Secret_Token}`
+      `${BASE_URL}/1/boards/${id}?key=${Trello_API_KEY}&token=${Trello_Secret_Token}`
     );
   //  console.log(res.data);
     return `Board Deleted Successfully : ${id}`;
@@ -26,6 +29,7 @@ const deleteBoard = async (id) => {
     return "Board Not Found";
   }
 };
+
 
 // Create New List
 const addListToBoard = async (id, listName) => {
@@ -35,7 +39,7 @@ const addListToBoard = async (id, listName) => {
   
   try {
     let res = await axios.post(
-      `https://api.trello.com/1/boards/${id}/lists?name=${listName}&key=${Trello_API_KEY}&token=${Trello_Secret_Token}`
+      `${BASE_URL}/1/boards/${id}/lists?name=${listName}&key=${Trello_API_KEY}&token=${Trello_Secret_Token}`
     );
     //  console.log(res.data);
     return `List Added Successfully Board-ID: ${id}`;
@@ -43,6 +47,7 @@ const addListToBoard = async (id, listName) => {
     return "Board Not Found plz send correct ID : addNewList_BoardID_ListName";
   }
 };
+
 
 // Add Task To List
 const addTaskToList = async (ListID, taskName) => {
@@ -53,7 +58,7 @@ const addTaskToList = async (ListID, taskName) => {
 
   try {
     let res = await axios.post(
-      `https://api.trello.com/1/cards?key=${Trello_API_KEY}&token=${Trello_Secret_Token}&idList=${ListID}&name=${taskName}`
+      `${BASE_URL}/1/cards?key=${Trello_API_KEY}&token=${Trello_Secret_Token}&idList=${ListID}&name=${taskName}`
     );
     //  console.log(res.data);
     return `Task Added Successfully List-ID: ${ListID}`;
@@ -61,6 +66,7 @@ const addTaskToList = async (ListID, taskName) => {
     return "List Not Found plz send correct ID : addNewCard_ListID_Taskname";
   }
 };
+
 
 // Remove Task or Card
 const RemoveCard = async (CardID) => {
@@ -70,7 +76,7 @@ const RemoveCard = async (CardID) => {
 
   try {
     let res = await axios.delete(
-      `https://api.trello.com/1/cards/${CardID}?key=${Trello_API_KEY}&token=${Trello_Secret_Token}`
+      `${BASE_URL}/1/cards/${CardID}?key=${Trello_API_KEY}&token=${Trello_Secret_Token}`
       
     );
     //  console.log(res.data);
@@ -79,8 +85,6 @@ const RemoveCard = async (CardID) => {
     return "Card Not Found plz send correct ID : RemoveCard_CardID";
   }
 };
-
-
 
 const TaskController = {
   createBoard,
