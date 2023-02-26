@@ -7,9 +7,10 @@
   - **/addNew_card To - Add New Card click**
   - **/delete_card To - Delete Card click**
   
+ # Telegram bot Link : https://t.me/Sufi_Flamecloud_bot
 # To Test Run in your System 👨‍💻  
-### npm install
-### npm start
+### run npm install
+### run npm start
 
 # Demo Video: 
  
