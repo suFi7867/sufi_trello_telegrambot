@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 3005;
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+
 // Launch Our bot
 botLaunch();
 
@@ -24,4 +25,4 @@ app.listen(PORT, async () => {
 
 
 
-// npm i cors dotenv nodemon node-telegram-bot-api telegraf axios
+// npm i cors dotenv nodemon telegraf axios
