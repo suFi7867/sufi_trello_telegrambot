@@ -17,7 +17,8 @@ bot.start((ctx) => {
     To Create board click /create_board
     To Delete board click /delete_board
     To Add New List click /addNew_list
-    To Add New Card click /addNew_card`);
+    To Add New Card click /addNew_card
+    To Delete Card click /delete_card`);
 });
 
 
@@ -41,10 +42,15 @@ bot.command("addNew_card", ctx => {
               : addNewCard_ListID_Taskname`);
 });
 
+bot.command("delete_card", ctx => {
+  ctx.reply(`Send Card ID in given Format
+              : RemoveCard_CardID`);
+});
+
 //
 //63fa24c32149a6b147bf583c
-
-https: bot.use(async ctx => {
+//
+bot.use(async ctx => {
   // console.log(ctx)
 
   if (ctx.message.text.includes("removeBoard")) {
@@ -74,7 +80,17 @@ https: bot.use(async ctx => {
     .then(res => ctx.reply(res));
   }
 
-  addNewList_ListID_Taskname;
+   if (ctx.message.text.includes("RemoveCard")) {
+     const id = ctx.message.text.split("_")[1];
+     
+     return TaskController.RemoveCard(id)
+     .then(res => ctx.reply(res));
+   }
+
+
+
+
+
 
   //   if (ctx.message.text.includes("addTask")) {
   //     const taskArr = ctx.message.text.split("_");

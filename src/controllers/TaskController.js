@@ -61,11 +61,31 @@ const addTaskToList = async (ListID, taskName) => {
   }
 };
 
+const RemoveCard = async (CardID) => {
+  
+  if (!CardID)
+    return "ID Not Provided Send Again with Including Card_ID : RemoveCard_CardID";
+
+  try {
+    let res = await axios.delete(
+      `https://api.trello.com/1/cards/${CardID}?key=${Trello_API_KEY}&token=${Trello_Secret_Token}`
+      
+    );
+    //  console.log(res.data);
+    return `Task Removed Successfully -ID: ${CardID}`;
+  } catch (e) {
+    return "Card Not Found plz send correct ID : RemoveCard_CardID";
+  }
+};
+
+
+
 const TaskController = {
   createBoard,
   deleteBoard,
   addListToBoard,
   addTaskToList,
+  RemoveCard,
 };
 
 module.exports = TaskController;
