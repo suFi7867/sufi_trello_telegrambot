@@ -7,7 +7,6 @@ const botLaunch = require("./bot");
 
 const PORT = process.env.PORT || 3005;
 
-
 // Deafult Midllewares
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -26,4 +25,4 @@ app.listen(PORT, async () => {
 
 
 
-// npm i cors dotenv nodemon node-telegram-bot-api telegraf
+// npm i cors dotenv nodemon node-telegram-bot-api telegraf axios
